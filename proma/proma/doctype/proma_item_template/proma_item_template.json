@@ -11,14 +11,22 @@
   "fields"
  ],
  "fields": [
+    {
+   "fieldname": "data_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Data Type",
+   "options": "Page\nGroup\nItem\nExtension"
+   "options": "Text\nTextarea\nSelect\nMultiselect\nNumber\nDate\nTime\nDatetime\nHeadline\nInput Radio Yes No\nInput Radio Yes No Na\nSpacer\nButton\nSketch\nSignature\nLabel\nEMail\nHyperlink" 
+  },
   {
-   "default": "Section",
    "fieldname": "type",
    "fieldtype": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Type",
-   "options": "Page\nGroup\nItem"
+   "options": "Page\nGroup\nItem\nExtension"
   },
   {
    "fieldname": "fields",
@@ -29,7 +37,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-06-26 15:49:01.999907",
+ "modified": "2022-07-01 15:49:01.999907",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "Proma Item Template",
