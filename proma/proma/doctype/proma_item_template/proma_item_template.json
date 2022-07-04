@@ -8,16 +8,18 @@
  "engine": "InnoDB",
  "field_order": [
   "type",
+  "data_type",
   "fields"
  ],
  "fields": [
-    {
+  {
+   "depends_on": "eval:doc.type === \"Item\"",
    "fieldname": "data_type",
    "fieldtype": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Data Type",
-   "options": "Text\nTextarea\nSelect\nMultiselect\nNumber\nDate\nTime\nDatetime\nHeadline\nInput Radio Yes No\nInput Radio Yes No Na\nSpacer\nButton\nSketch\nSignature\nLabel\nEMail\nHyperlink" 
+   "options": "Attach\nAttach Image\nBarcode\nButton\nCheck\nColor\nData\nDate\nDatetime\nColumn Break\nData\nDate\nDatetime\nFloat\nGeolocation\nHeading\nHTML\nIcon\nImage\nInt\nSection Break\nSelect\nTable\nTable Break\nTable MultiSelect\nText\nLong Text\nTime\nSignature"
   },
   {
    "fieldname": "type",
@@ -36,7 +38,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-04 13:50:01.999907",
+ "modified": "2022-07-04 22:06:42.262512",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "Proma Item Template",

@@ -7,14 +7,7 @@
  "field_order": [
   "proma_item_template",
   "edit_values",
-  "proma_item_template_values",
-  "css_class",
-  "column_break_5",
-  "add_container",
-  "add_top_padding",
-  "add_bottom_padding",
-  "add_shade",
-  "hide_block"
+  "proma_item_template_values"
  ],
  "fields": [
   {
@@ -36,50 +29,11 @@
    "hidden": 1,
    "label": "Proma Item Template Values",
    "options": "JSON"
-  },
-  {
-   "fieldname": "css_class",
-   "fieldtype": "Small Text",
-   "label": "CSS Class"
-  },
-  {
-   "fieldname": "column_break_5",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "add_container",
-   "fieldtype": "Check",
-   "label": "Add Container"
-  },
-  {
-   "default": "1",
-   "fieldname": "add_top_padding",
-   "fieldtype": "Check",
-   "label": "Add Space on Top"
-  },
-  {
-   "default": "1",
-   "fieldname": "add_bottom_padding",
-   "fieldtype": "Check",
-   "label": "Add Space on Bottom"
-  },
-  {
-   "default": "0",
-   "fieldname": "add_shade",
-   "fieldtype": "Check",
-   "label": "Add Gray Background"
-  },
-  {
-   "default": "0",
-   "fieldname": "hide_block",
-   "fieldtype": "Check",
-   "label": "Hide Block"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2022-06-25 15:48:52.047654",
+ "modified": "2022-07-04 22:19:13.835730",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "Proma Check List Template Block",
