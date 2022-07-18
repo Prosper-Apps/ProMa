@@ -13,8 +13,89 @@
  "is_default": 0,
  "is_standard": 1,
  "label": "Proma Testing",
- "links": [],
- "modified": "2022-06-25 15:51:25.636554",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Proma  CheckList Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Proma Check List Template",
+   "link_to": "Proma Check List Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Proma Item Template",
+   "link_to": "Proma Item Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Proma CheckList",
+   "link_type": "DocType",
+   "onboard": 0,
+   "only_for": "",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ProMa Checklist",
+   "link_to": "ProMa Checklist",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ProMa Team Member",
+   "link_to": "ProMa Team Member",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ProMa Team",
+   "link_to": "ProMa Team",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ProMa User ID",
+   "link_to": "ProMa User ID",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ProMa Service Partner",
+   "link_to": "ProMa Service Partner",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2022-07-18 07:27:31.150048",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "Proma Testing",
@@ -32,6 +113,12 @@
    "doc_view": "List",
    "label": "Proma Check List Template",
    "link_to": "Proma Check List Template",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "ProMa Checklist",
+   "link_to": "ProMa Checklist",
    "type": "DocType"
   }
  ]
