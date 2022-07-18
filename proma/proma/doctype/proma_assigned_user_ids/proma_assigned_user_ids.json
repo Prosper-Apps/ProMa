@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-07-16 17:26:47.128457",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "proma_user_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "proma_user_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "ProMa User ID",
+   "options": "ProMa User ID"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-07-16 17:26:47.128457",
+ "modified_by": "Administrator",
+ "module": "ProMa",
+ "name": "ProMa Assigned User IDs",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
