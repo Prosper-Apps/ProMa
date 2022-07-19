@@ -1,0 +1,435 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:title",
+ "creation": "2022-07-08 11:17:20.268868",
+ "description": "Page to show on the website\n",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_title",
+  "title",
+  "id",
+  "referenceid",
+  "protocol_state",
+  "column_break_5",
+  "allowparallelediting",
+  "requireprecheck",
+  "requirepostcheck",
+  "checklist_name_section",
+  "cl_name",
+  "checklist_name",
+  "cl_description",
+  "checklist_description",
+  "template_section",
+  "template_id",
+  "approvedat",
+  "template_name",
+  "assigned_users_ids_section",
+  "assigneduserids",
+  "assigned_team_section",
+  "assignedteams",
+  "client_section",
+  "client_id",
+  "column_break_19",
+  "client_name",
+  "customer_section_section",
+  "customer_id",
+  "column_break_23",
+  "customer_name",
+  "service_partner_section_section",
+  "servicepartner",
+  "column_break_32",
+  "service_partner_name",
+  "installation_section_section",
+  "installation_id",
+  "installation_name",
+  "street",
+  "city",
+  "column_break_38",
+  "comment",
+  "lat",
+  "lng",
+  "section_break_42",
+  "contacts",
+  "file_urls_section",
+  "file_url_id",
+  "on_demand",
+  "context",
+  "file_url",
+  "file_url_name",
+  "comment_section_section",
+  "comments",
+  "settings_section_section",
+  "language",
+  "requiredfieldsoptional",
+  "allowparalleleditingcamera",
+  "camera",
+  "contributors_section_section",
+  "proma_contributors",
+  "sb1",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_title",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Title",
+   "no_copy": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "sb1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Proma CheckList Content",
+   "options": "ProMa Checklist Items"
+  },
+  {
+   "description": "ID from Firebase",
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "label": "ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "referenceid",
+   "fieldtype": "Data",
+   "label": "Reference ID"
+  },
+  {
+   "fieldname": "template_section",
+   "fieldtype": "Section Break",
+   "label": "Template "
+  },
+  {
+   "fieldname": "template_id",
+   "fieldtype": "Int",
+   "label": "Template ID"
+  },
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Table",
+   "label": "Template Name",
+   "options": "ProMa Multi Language Field"
+  },
+  {
+   "fieldname": "approvedat",
+   "fieldtype": "Datetime",
+   "label": "Approved At"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "allowparallelediting",
+   "fieldtype": "Check",
+   "label": "Allow Parallel Editing"
+  },
+  {
+   "default": "0",
+   "fieldname": "requireprecheck",
+   "fieldtype": "Check",
+   "label": "Require PreCheck"
+  },
+  {
+   "default": "0",
+   "fieldname": "requirepostcheck",
+   "fieldtype": "Check",
+   "label": "Require PostCheck"
+  },
+  {
+   "fieldname": "assigned_users_ids_section",
+   "fieldtype": "Section Break",
+   "label": "Assigned Users IDs"
+  },
+  {
+   "fieldname": "assigneduserids",
+   "fieldtype": "Table MultiSelect",
+   "options": "ProMa Assigned User IDs"
+  },
+  {
+   "fieldname": "assigned_team_section",
+   "fieldtype": "Section Break",
+   "label": "Assigned Team"
+  },
+  {
+   "fieldname": "assignedteams",
+   "fieldtype": "Table MultiSelect",
+   "options": "ProMa Team Item"
+  },
+  {
+   "fieldname": "client_section",
+   "fieldtype": "Section Break",
+   "label": "Client Section"
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client ID"
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "label": "Client Name"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_section_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Section"
+  },
+  {
+   "fieldname": "customer_id",
+   "fieldtype": "Data",
+   "label": "Customer ID"
+  },
+  {
+   "fieldname": "column_break_23",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "checklist_name_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "checklist_name",
+   "fieldtype": "Table",
+   "label": "CheckList Name",
+   "options": "ProMa Multi Language Field"
+  },
+  {
+   "fieldname": "checklist_description",
+   "fieldtype": "Table",
+   "label": "CheckList Description",
+   "options": "ProMa Multi Language Field"
+  },
+  {
+   "fieldname": "cl_name",
+   "fieldtype": "Heading",
+   "label": "CheckList Name"
+  },
+  {
+   "fieldname": "cl_description",
+   "fieldtype": "Heading",
+   "label": "CheckList Description"
+  },
+  {
+   "fieldname": "servicepartner",
+   "fieldtype": "Link",
+   "label": "Service Partner ID",
+   "options": "ProMa Service Partner"
+  },
+  {
+   "fieldname": "service_partner_section_section",
+   "fieldtype": "Section Break",
+   "label": "Service Partner Section"
+  },
+  {
+   "fieldname": "column_break_32",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "servicepartner.name1",
+   "fieldname": "service_partner_name",
+   "fieldtype": "Data",
+   "label": "Service Partner Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "installation_section_section",
+   "fieldtype": "Section Break",
+   "label": "Installation Section"
+  },
+  {
+   "fieldname": "installation_id",
+   "fieldtype": "Data",
+   "label": "ID"
+  },
+  {
+   "fieldname": "installation_name",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "street",
+   "fieldtype": "Data",
+   "label": "Street"
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Data",
+   "label": "Comment"
+  },
+  {
+   "fieldname": "lat",
+   "fieldtype": "Data",
+   "label": "Latitude"
+  },
+  {
+   "fieldname": "lng",
+   "fieldtype": "Data",
+   "label": "Longitude"
+  },
+  {
+   "fieldname": "column_break_38",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 11,
+   "fieldname": "contacts",
+   "fieldtype": "Table",
+   "label": "Installation Contacts",
+   "options": "ProMa Installation Contacts",
+   "width": "100%"
+  },
+  {
+   "fieldname": "section_break_42",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "file_urls_section",
+   "fieldtype": "Section Break",
+   "label": "File URLs"
+  },
+  {
+   "fieldname": "file_url_id",
+   "fieldtype": "Data",
+   "label": "ID"
+  },
+  {
+   "default": "0",
+   "fieldname": "on_demand",
+   "fieldtype": "Check",
+   "label": "On Demand"
+  },
+  {
+   "fieldname": "context",
+   "fieldtype": "Data",
+   "label": "Context"
+  },
+  {
+   "fieldname": "file_url_name",
+   "fieldtype": "Table",
+   "label": "Name",
+   "options": "ProMa Multi Language Field"
+  },
+  {
+   "fieldname": "comment_section_section",
+   "fieldtype": "Section Break",
+   "label": "Comment Section"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Table",
+   "label": "Comments",
+   "options": "ProMa Comments"
+  },
+  {
+   "fieldname": "settings_section_section",
+   "fieldtype": "Section Break",
+   "label": "Settings Section"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "label": "Language",
+   "options": "\nde\nen\nes\nzh"
+  },
+  {
+   "default": "0",
+   "fieldname": "allowparalleleditingcamera",
+   "fieldtype": "Check",
+   "label": "Allow Parallel Editing"
+  },
+  {
+   "fieldname": "camera",
+   "fieldtype": "Table",
+   "label": "Camera",
+   "options": "ProMa Camera"
+  },
+  {
+   "fieldname": "contributors_section_section",
+   "fieldtype": "Section Break",
+   "label": "Contributors Section"
+  },
+  {
+   "description": "The processing state of the protocol 1 = in preparation 2 = ready for execution 3 = in execution 4 = in review 5 = canceled 6 = finished",
+   "fieldname": "protocol_state",
+   "fieldtype": "Select",
+   "label": "Protocol State",
+   "options": "\n1\n2\n3\n4\n5\n6"
+  },
+  {
+   "fieldname": "proma_contributors",
+   "fieldtype": "Table",
+   "options": "ProMa Contributors"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Table",
+   "label": "URL",
+   "options": "ProMa Multi Language Field"
+  },
+  {
+   "default": "0",
+   "fieldname": "requiredfieldsoptional",
+   "fieldtype": "Check",
+   "label": "Required Fields Optional"
+  }
+ ],
+ "icon": "fa fa-file-alt",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-07-18 06:37:07.129733",
+ "modified_by": "Administrator",
+ "module": "ProMa",
+ "name": "ProMa Checklist",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "track_changes": 1
+}

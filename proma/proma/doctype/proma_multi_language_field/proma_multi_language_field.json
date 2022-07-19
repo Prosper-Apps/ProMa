@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-07-17 17:32:18.804055",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "de",
+  "en",
+  "es",
+  "zh"
+ ],
+ "fields": [
+  {
+   "fieldname": "de",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "German Text"
+  },
+  {
+   "fieldname": "en",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "English Text"
+  },
+  {
+   "fieldname": "es",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Spanish Text"
+  },
+  {
+   "fieldname": "zh",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Chinese Text"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-07-17 17:44:36.900451",
+ "modified_by": "Administrator",
+ "module": "ProMa",
+ "name": "ProMa Multi Language Field",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
