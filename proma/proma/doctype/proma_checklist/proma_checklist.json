@@ -12,25 +12,24 @@
  "field_order": [
   "section_title",
   "title",
-  "id",
-  "referenceid",
+  "chk_name",
+  "description",
   "protocol_state",
-  "column_break_5",
+  "column_break_6",
+  "referenceid",
+  "id",
+  "column_break_9",
   "allowparallelediting",
   "requireprecheck",
   "requirepostcheck",
   "checklist_name_section",
-  "cl_name",
-  "checklist_name",
-  "cl_description",
-  "checklist_description",
   "template_section",
   "template_id",
   "approvedat",
-  "template_name",
-  "assigned_users_ids_section",
+  "template_names",
+  "assignment_section_section",
   "assigneduserids",
-  "assigned_team_section",
+  "column_break_21",
   "assignedteams",
   "client_section",
   "client_id",
@@ -81,10 +80,8 @@
   {
    "fieldname": "title",
    "fieldtype": "Data",
-   "in_global_search": 1,
    "in_list_view": 1,
    "label": "Title",
-   "no_copy": 1,
    "reqd": 1,
    "unique": 1
   },
@@ -121,19 +118,9 @@
    "label": "Template ID"
   },
   {
-   "fieldname": "template_name",
-   "fieldtype": "Table",
-   "label": "Template Name",
-   "options": "ProMa Multi Language Field"
-  },
-  {
    "fieldname": "approvedat",
    "fieldtype": "Datetime",
    "label": "Approved At"
-  },
-  {
-   "fieldname": "column_break_5",
-   "fieldtype": "Column Break"
   },
   {
    "default": "0",
@@ -154,23 +141,15 @@
    "label": "Require PostCheck"
   },
   {
-   "fieldname": "assigned_users_ids_section",
-   "fieldtype": "Section Break",
-   "label": "Assigned Users IDs"
-  },
-  {
    "fieldname": "assigneduserids",
    "fieldtype": "Table MultiSelect",
+   "label": "Assigned Users IDs",
    "options": "ProMa Assigned User IDs"
-  },
-  {
-   "fieldname": "assigned_team_section",
-   "fieldtype": "Section Break",
-   "label": "Assigned Team"
   },
   {
    "fieldname": "assignedteams",
    "fieldtype": "Table MultiSelect",
+   "label": "Assigned Team",
    "options": "ProMa Team Item"
   },
   {
@@ -214,28 +193,6 @@
   {
    "fieldname": "checklist_name_section",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "checklist_name",
-   "fieldtype": "Table",
-   "label": "CheckList Name",
-   "options": "ProMa Multi Language Field"
-  },
-  {
-   "fieldname": "checklist_description",
-   "fieldtype": "Table",
-   "label": "CheckList Description",
-   "options": "ProMa Multi Language Field"
-  },
-  {
-   "fieldname": "cl_name",
-   "fieldtype": "Heading",
-   "label": "CheckList Name"
-  },
-  {
-   "fieldname": "cl_description",
-   "fieldtype": "Heading",
-   "label": "CheckList Description"
   },
   {
    "fieldname": "servicepartner",
@@ -333,9 +290,9 @@
   },
   {
    "fieldname": "file_url_name",
-   "fieldtype": "Table",
+   "fieldtype": "Link",
    "label": "Name",
-   "options": "ProMa Multi Language Field"
+   "options": "ProMa File URL Name"
   },
   {
    "fieldname": "comment_section_section",
@@ -395,21 +352,56 @@
   },
   {
    "fieldname": "file_url",
-   "fieldtype": "Table",
+   "fieldtype": "Link",
    "label": "URL",
-   "options": "ProMa Multi Language Field"
+   "options": "ProMa File URL"
   },
   {
    "default": "0",
    "fieldname": "requiredfieldsoptional",
    "fieldtype": "Check",
    "label": "Required Fields Optional"
+  },
+  {
+   "fieldname": "assignment_section_section",
+   "fieldtype": "Section Break",
+   "label": "Assignment Section "
+  },
+  {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "chk_name",
+   "fieldtype": "Link",
+   "label": "Name",
+   "options": "ProMa Checklist Name"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Link",
+   "label": "Description",
+   "options": "ProMa Checklist Description"
+  },
+  {
+   "fieldname": "template_names",
+   "fieldtype": "Link",
+   "label": "Template Name",
+   "options": "ProMa Template Name"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
   }
  ],
  "icon": "fa fa-file-alt",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-18 06:37:07.129733",
+ "modified": "2022-08-08 20:34:46.764416",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "ProMa Checklist",
@@ -428,7 +420,6 @@
    "write": 1
   }
  ],
- "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "ASC",
  "track_changes": 1
