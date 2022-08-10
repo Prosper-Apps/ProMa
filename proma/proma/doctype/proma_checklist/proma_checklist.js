@@ -114,7 +114,7 @@ function open_template_values_editor(template, current_values = {}) {
 frappe.ui.form.on('ProMa Checklist', {
 refresh(frm) {
 	    frm.add_custom_button('Item Checklist Template', function () { frm.trigger('get_items') }, __("Get Items From"));
-	    if(!frm.doc.__islocal && !frm.doc.id){
+	    if(!frm.doc.__islocal){
 			frm.add_custom_button(	__('Export List'),
 			() => {
 			    if(frm.is_dirty()){

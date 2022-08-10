@@ -21,27 +21,48 @@ def send_to_proma_api(data):
         print("exception occurred")
 
 
-def get_multi_language_items(return_dict, list_item):
-    for tdt in list_item:
-        return_dict.setdefault("de", tdt.de),
-        return_dict.setdefault("en", tdt.en),
-        return_dict.setdefault("es", tdt.es),
-        return_dict.setdefault("zh", tdt.zh)
-        break
+def get_the_langs(list_name, doctype_name):
+    items = frappe.db.get_list(doctype_name, filters={'name': list_name}, fields=['de', 'en', 'es', 'zh'])
+    if items:
+        return items[0]
+    else:
+        return {
+            "de": "",
+            "en": "",
+            "es": "",
+            "zh": ""
+        }
+
+
+def get_item_values(items_values):
+    return_dict = {}
+    for itm_key, itm_value in items_values.items():
+        if isinstance(itm_value, list):
+            list_itm = []
+            for itm in itm_value:
+                dct_itm = {}
+                for key, value in itm.items():
+                    if key == "idx":
+                        dct_itm["position"] = value
+                    if key != "__islocal":
+                        dct_itm[key] = value
+                dct_itm.pop("idx")
+                list_itm.append(dct_itm)
+            return_dict.update({str(itm_key): list_itm})
+        else:
+            return_dict[itm_key] = itm_value
     return return_dict
 
 
 @frappe.whitelist()
 def proma_checklist(checklist):
     cl_item = frappe.get_doc("ProMa Checklist", checklist)
-
-    template_names = checklist_name = checklist_description = file_urls = file_names = camera_setting = frappe._dict()
-    template_names = get_multi_language_items(template_names, cl_item.template_name)
-    checklist_name = get_multi_language_items(checklist_name, cl_item.checklist_name)
-    checklist_description = get_multi_language_items(checklist_description, cl_item.checklist_description)
-    file_names = get_multi_language_items(file_names, cl_item.file_url_name)
-    file_urls = get_multi_language_items(file_urls, cl_item.file_url)
-
+    camera_setting = frappe._dict()
+    template_names = get_the_langs(cl_item.template_names, 'ProMa Template Name')
+    checklist_name = get_the_langs(cl_item.chk_name, 'ProMa Checklist Name')
+    checklist_description = get_the_langs(cl_item.description, 'ProMa Checklist Description')
+    file_names = get_the_langs(cl_item.file_url_name, 'ProMa File URL Name')
+    file_urls = get_the_langs(cl_item.file_url, 'ProMa File URL')
     contacts_list = []
     for c_list in cl_item.contacts:
         lst = {
@@ -87,7 +108,7 @@ def proma_checklist(checklist):
 
     proma_items = []
     for b in cl_item.items:
-        proma_items.append(b.proma_item_template_values)
+        proma_items.append(get_item_values(json.loads(b.proma_item_template_values)))
 
     data = {
         "referenceId": cl_item.referenceid,
