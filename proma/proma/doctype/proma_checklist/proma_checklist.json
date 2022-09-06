@@ -12,6 +12,7 @@
  "field_order": [
   "section_title",
   "title",
+  "test",
   "chk_name",
   "description",
   "protocol_state",
@@ -290,9 +291,9 @@
   },
   {
    "fieldname": "file_url_name",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Name",
-   "options": "ProMa File URL Name"
+   "translatable": 1
   },
   {
    "fieldname": "comment_section_section",
@@ -352,9 +353,9 @@
   },
   {
    "fieldname": "file_url",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "URL",
-   "options": "ProMa File URL"
+   "translatable": 1
   },
   {
    "default": "0",
@@ -373,21 +374,21 @@
   },
   {
    "fieldname": "chk_name",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Name",
-   "options": "ProMa Checklist Name"
+   "translatable": 1
   },
   {
    "fieldname": "description",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Description",
-   "options": "ProMa Checklist Description"
+   "translatable": 1
   },
   {
    "fieldname": "template_names",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Template Name",
-   "options": "ProMa Template Name"
+   "translatable": 1
   },
   {
    "fieldname": "column_break_6",
@@ -396,12 +397,18 @@
   {
    "fieldname": "column_break_9",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "test",
+   "fieldtype": "Data",
+   "label": "Test",
+   "translatable": 1
   }
  ],
  "icon": "fa fa-file-alt",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-08-08 20:34:46.764416",
+ "modified": "2022-09-06 09:04:04.933124",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "ProMa Checklist",

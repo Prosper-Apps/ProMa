@@ -21,10 +21,15 @@ def send_to_proma_api(data):
         print("exception occurred")
 
 
-def get_the_langs(list_name, doctype_name):
-    items = frappe.db.get_list(doctype_name, filters={'name': list_name}, fields=['de', 'en', 'es', 'zh'])
-    if items:
-        return items[0]
+def get_translation(source_text):
+    if source_text:
+        lst = frappe.db.get_list('Translation', filters={'source_text': source_text},
+                                 fields=['language', 'translated_text'])
+        trans = {}
+        if lst:
+            for item in lst:
+                trans.setdefault(str(item.language), str(item.translated_text))
+        return trans
     else:
         return {
             "de": "",
@@ -34,8 +39,8 @@ def get_the_langs(list_name, doctype_name):
         }
 
 
-def get_item_values(items_values):
-    return_dict = {}
+def get_item_values(items_values, position):
+    return_dict = {"position": position}
     for itm_key, itm_value in items_values.items():
         if isinstance(itm_value, list):
             list_itm = []
@@ -58,11 +63,11 @@ def get_item_values(items_values):
 def proma_checklist(checklist):
     cl_item = frappe.get_doc("ProMa Checklist", checklist)
     camera_setting = frappe._dict()
-    template_names = get_the_langs(cl_item.template_names, 'ProMa Template Name')
-    checklist_name = get_the_langs(cl_item.chk_name, 'ProMa Checklist Name')
-    checklist_description = get_the_langs(cl_item.description, 'ProMa Checklist Description')
-    file_names = get_the_langs(cl_item.file_url_name, 'ProMa File URL Name')
-    file_urls = get_the_langs(cl_item.file_url, 'ProMa File URL')
+    template_names = get_translation(cl_item.template_names)
+    checklist_name = get_translation(cl_item.chk_name)
+    checklist_description = get_translation(cl_item.description)
+    file_names = get_translation(cl_item.file_url_name)
+    file_urls = get_translation(cl_item.file_url)
     contacts_list = []
     for c_list in cl_item.contacts:
         lst = {
@@ -108,7 +113,7 @@ def proma_checklist(checklist):
 
     proma_items = []
     for b in cl_item.items:
-        proma_items.append(get_item_values(json.loads(b.proma_item_template_values)))
+        proma_items.append(get_item_values(json.loads(b.proma_item_template_values), b.idx))
 
     data = {
         "referenceId": cl_item.referenceid,
