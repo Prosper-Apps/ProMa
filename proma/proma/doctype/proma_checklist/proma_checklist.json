@@ -12,7 +12,6 @@
  "field_order": [
   "section_title",
   "title",
-  "test",
   "chk_name",
   "description",
   "protocol_state",
@@ -397,18 +396,12 @@
   {
    "fieldname": "column_break_9",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "test",
-   "fieldtype": "Data",
-   "label": "Test",
-   "translatable": 1
   }
  ],
  "icon": "fa fa-file-alt",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-06 09:04:04.933124",
+ "modified": "2022-09-06 22:38:04.780408",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "ProMa Checklist",

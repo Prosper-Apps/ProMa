@@ -39,9 +39,9 @@ def get_translation(source_text):
         }
 
 
-def get_item_values(items_values, position):
-    return_dict = {"position": position}
+def get_item_values(items_values, position, item_type, item_name, parent_id=""):
     for itm_key, itm_value in items_values.items():
+        return_dict = {}
         if isinstance(itm_value, list):
             list_itm = []
             for itm in itm_value:
@@ -56,6 +56,11 @@ def get_item_values(items_values, position):
             return_dict.update({str(itm_key): list_itm})
         else:
             return_dict[itm_key] = itm_value
+
+    return_dict["id"] = return_dict["position"] = position
+    return_dict["parent_id"] = parent_id
+    return_dict["type"] = item_type
+    return_dict["name"] = get_translation(item_name)
     return return_dict
 
 
@@ -112,8 +117,20 @@ def proma_checklist(checklist):
         assignedteams.append(a_team.team)
 
     proma_items = []
+    page_id = ""
+    grp_id = ""
     for b in cl_item.items:
-        proma_items.append(get_item_values(json.loads(b.proma_item_template_values), b.idx))
+        if b.item_type == "Page":
+            page_id = b.idx
+            proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
+                                               b.idx, b.item_type, b.item_name))
+        if b.item_type == "Group":
+            grp_id = b.idx
+            proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
+                                               b.idx, b.item_type, b.item_name, page_id))
+        if b.item_type == "Item":
+            proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
+                                               b.idx, b.item_type, b.item_name, grp_id))
 
     data = {
         "referenceId": cl_item.referenceid,
