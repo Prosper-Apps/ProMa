@@ -37,13 +37,13 @@
    "fieldname": "proma_check_list_template",
    "fieldtype": "Table",
    "label": "Proma Check List Template",
-   "options": "Proma Check List Template Block"
+   "options": "ProMa Checklist Template Items"
   }
  ],
  "icon": "fa fa-file-alt",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-04 15:48:32.893198",
+ "modified": "2022-09-21 08:12:03.341216",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "Proma Check List Template",

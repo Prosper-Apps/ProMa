@@ -1,7 +1,7 @@
 // Copyright (c) 2022, phamos GmbH and contributors
 // For license information, please see license.txt
 
-var checklist_fields = ["proma_item_template","edit_values","proma_item_template_values"];
+var checklist_fields = ["proma_item_template","item_type","edit_values","item_name","hint","proma_item_template_values"];
 
 function get_child_tables(frm, s_cd_name,fields,t_cd_name){
                 for(var n = 0; n < s_cd_name.length; n++){
@@ -82,8 +82,6 @@ function open_template_values_editor(template, current_values = {}) {
 			} else {
 				table_fields.push(df);
 				current_table = df;
-
-				// start capturing fields in current_table till the next table break
 				current_table.fields = [];
 			}
 		}
@@ -112,7 +110,7 @@ function open_template_values_editor(template, current_values = {}) {
 }
 
 frappe.ui.form.on('ProMa Checklist', {
-refresh(frm) {
+	refresh(frm) {
 	    frm.add_custom_button('Item Checklist Template', function () { frm.trigger('get_items') }, __("Get Items From"));
 	    if(!frm.doc.__islocal){
 			frm.add_custom_button(	__('Export List'),
@@ -139,11 +137,10 @@ refresh(frm) {
 			});
 	    }
 	},
-
 	get_items(frm){
 	    checklist_dialog(frm);
 	},
-    	onload: function(frm) {
+	onload: function(frm) {
 		frm.set_query('proma_item_template', 'items', function() {
 			return {
 				filters: {
@@ -151,7 +148,7 @@ refresh(frm) {
 				}
 			};
 		});
-	},
+	}
 });
 
 frappe.ui.form.on("ProMa Checklist Items", {

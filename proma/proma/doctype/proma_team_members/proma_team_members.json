@@ -10,6 +10,7 @@
   "personal_details_section",
   "first_name",
   "email_id",
+  "create_userid",
   "column_break_4",
   "last_name",
   "phone_no"
@@ -47,11 +48,18 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Phone No"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.__islocal",
+   "fieldname": "create_userid",
+   "fieldtype": "Check",
+   "label": "Create a ProMa UserID?"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-17 18:18:51.276610",
+ "modified": "2022-09-20 13:30:55.417472",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "ProMa Team Members",

@@ -28,7 +28,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-17 18:16:23.316622",
+ "modified": "2022-09-20 13:04:35.800468",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "ProMa Team",
@@ -48,5 +48,6 @@
   }
  ],
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "title_field": "team_name"
 }
