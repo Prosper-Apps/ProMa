@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "creation": "2022-09-21 08:11:27.200293",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "proma_item_template",
+  "item_type",
+  "edit_values",
+  "column_break_4",
+  "item_name",
+  "hint",
+  "section_break_8",
+  "proma_item_template_values"
+ ],
+ "fields": [
+  {
+   "fieldname": "proma_item_template",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Proma Item Template",
+   "options": "Proma Item Template"
+  },
+  {
+   "fetch_from": "proma_item_template.type",
+   "fieldname": "item_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "edit_values",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "Edit Values"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "reqd": 1,
+   "translatable": 1
+  },
+  {
+   "fieldname": "hint",
+   "fieldtype": "Data",
+   "label": "Hint",
+   "translatable": 1
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "proma_item_template_values",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "Proma Item Template Values",
+   "options": "JSON"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2022-09-21 17:15:14.034792",
+ "modified_by": "Administrator",
+ "module": "ProMa",
+ "name": "ProMa Checklist Template Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
