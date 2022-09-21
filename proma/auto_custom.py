@@ -29,38 +29,91 @@ def get_translation(source_text):
         if lst:
             for item in lst:
                 trans.setdefault(str(item.language), str(item.translated_text))
-        return trans
+
+            if trans:
+                if not trans.get("en"):
+                    trans.setdefault("en", source_text)
+                if not trans.get("es"):
+                    trans.setdefault("es", source_text)
+                if not trans.get("zh"):
+                    trans.setdefault("zh", source_text)
+                if not trans.get("de"):
+                    trans.setdefault("de", source_text)
+            return trans
+        else:
+            return {
+                "de": source_text,
+                "en": source_text,
+                "es": source_text,
+                "zh": source_text
+            }
     else:
         return {
-            "de": "",
-            "en": "",
-            "es": "",
-            "zh": ""
+            "de": None,
+            "en": None,
+            "es": None,
+            "zh": None
         }
 
 
-def get_item_values(items_values, position, item_type, item_name, parent_id=""):
+def get_item_values(items_values, id, position, item_type, item_name, hint, label, parent_id=None):
+    return_dict = {}
     for itm_key, itm_value in items_values.items():
-        return_dict = {}
-        if isinstance(itm_value, list):
+        if itm_key == "options":
+            if isinstance(itm_value, list):
+                opt_list = []
+                for opt in itm_value:
+                    opt_itm = {}
+                    for key, value in opt.items():
+                        if key != "__islocal":
+                            opt_itm[key] = value
+                        if key == "label":
+                            opt_itm[key] = get_translation(value)
+
+                    opt_itm.pop("idx")
+                    opt_itm.pop("name")
+
+                    opt_list.append(opt_itm)
+                return_dict.update({"options": opt_list})
+
+        elif isinstance(itm_value, list) and itm_key != "options":
             list_itm = []
             for itm in itm_value:
                 dct_itm = {}
                 for key, value in itm.items():
                     if key == "idx":
-                        dct_itm["position"] = value
+                        dct_itm["position"] = value - 1
                     if key != "__islocal":
                         dct_itm[key] = value
                 dct_itm.pop("idx")
                 list_itm.append(dct_itm)
             return_dict.update({str(itm_key): list_itm})
+        elif itm_key == "values":
+            values = [itm_value]
+            return_dict["values"] = values
+        elif itm_key == "dataType":
+            return_dict["dataType"] = itm_value
         else:
-            return_dict[itm_key] = itm_value
+            props = {}
+            props.setdefault("hint", get_translation(hint))
+            if isinstance(itm_value, int):
+                props.update({str(itm_key): bool(int(itm_value))})
+            else:
+                props.update({str(itm_key): itm_value})
 
-    return_dict["id"] = return_dict["position"] = position
-    return_dict["parent_id"] = parent_id
-    return_dict["type"] = item_type
+            return_dict.update({"props": props})
+
+    return_dict["id"] = str(id)
+    return_dict["position"] = int(position) - 1
+    return_dict["type"] = item_type.lower()
     return_dict["name"] = get_translation(item_name)
+    if parent_id != "":
+        return_dict["parentId"] = str(parent_id)
+    else:
+        return_dict["parentId"] = None
+    if not return_dict.get("values"):
+        return_dict["values"] = None
+
     return return_dict
 
 
@@ -122,15 +175,15 @@ def proma_checklist(checklist):
     for b in cl_item.items:
         if b.item_type == "Page":
             page_id = b.idx
-            proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
-                                               b.idx, b.item_type, b.item_name))
+            proma_items.append(get_item_values(json.loads(b.proma_item_template_values), b.idx,
+                                               b.idx, b.item_type, b.item_name, b.hint, b.label))
         if b.item_type == "Group":
             grp_id = b.idx
             proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
-                                               b.idx, b.item_type, b.item_name, page_id))
+                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, b.label, page_id))
         if b.item_type == "Item":
             proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
-                                               b.idx, b.item_type, b.item_name, grp_id))
+                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, b.label, grp_id))
 
     data = {
         "referenceId": cl_item.referenceid,
@@ -190,5 +243,6 @@ def proma_checklist(checklist):
         "contributors": contributors_list,
         "items": proma_items
     }
+
     res = send_to_proma_api(data)
     return res
