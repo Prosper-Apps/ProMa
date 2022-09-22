@@ -56,7 +56,7 @@ def get_translation(source_text):
         }
 
 
-def get_item_values(items_values, id, position, item_type, item_name, hint, label, parent_id=None):
+def get_item_values(items_values, id, position, item_type, item_name, hint, parent_id=None):
     return_dict = {}
     for itm_key, itm_value in items_values.items():
         if itm_key == "options":
@@ -176,14 +176,14 @@ def proma_checklist(checklist):
         if b.item_type == "Page":
             page_id = b.idx
             proma_items.append(get_item_values(json.loads(b.proma_item_template_values), b.idx,
-                                               b.idx, b.item_type, b.item_name, b.hint, b.label))
+                                               b.idx, b.item_type, b.item_name, b.hint))
         if b.item_type == "Group":
             grp_id = b.idx
             proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
-                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, b.label, page_id))
+                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, page_id))
         if b.item_type == "Item":
             proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
-                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, b.label, grp_id))
+                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, grp_id))
 
     data = {
         "referenceId": cl_item.referenceid,
