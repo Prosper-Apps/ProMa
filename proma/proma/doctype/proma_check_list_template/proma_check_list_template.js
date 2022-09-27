@@ -88,7 +88,7 @@ frappe.ui.form.on('Proma Check List Template', {
 	},
 });
 
-frappe.ui.form.on("Proma Check List Template Block", {
+frappe.ui.form.on("ProMa Checklist Template Items", {
 	edit_values(frm, cdt, cdn) {
 		let row = frm.selected_doc;
 		let values = JSON.parse(row.proma_item_template_values || "{}");

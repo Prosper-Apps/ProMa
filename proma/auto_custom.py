@@ -56,7 +56,7 @@ def get_translation(source_text):
         }
 
 
-def get_item_values(items_values, id, position, item_type, item_name, hint, label, parent_id=None):
+def get_item_values(items_values, id, position, item_type, item_name, hint, item_values=None, parent_id=None):
     return_dict = {}
     for itm_key, itm_value in items_values.items():
         if itm_key == "options":
@@ -89,8 +89,9 @@ def get_item_values(items_values, id, position, item_type, item_name, hint, labe
                 list_itm.append(dct_itm)
             return_dict.update({str(itm_key): list_itm})
         elif itm_key == "values":
-            values = [itm_value]
-            return_dict["values"] = values
+            if not item_values:
+                values = [itm_value]
+                return_dict["values"] = values
         elif itm_key == "dataType":
             return_dict["dataType"] = itm_value
         else:
@@ -104,6 +105,7 @@ def get_item_values(items_values, id, position, item_type, item_name, hint, labe
             return_dict.update({"props": props})
 
     return_dict["id"] = str(id)
+    return_dict["values"] = item_values
     return_dict["position"] = int(position) - 1
     return_dict["type"] = item_type.lower()
     return_dict["name"] = get_translation(item_name)
@@ -113,6 +115,45 @@ def get_item_values(items_values, id, position, item_type, item_name, hint, labe
         return_dict["parentId"] = None
     if not return_dict.get("values"):
         return_dict["values"] = None
+
+    return return_dict
+
+
+def get_extension_items(items_values, id, position, item_type, item_name, hint, item_value=None, parent_id=None):
+    return_dict = {"dataType": None, "values": item_value, "type": item_type.lower(),
+                   "name": get_translation(item_name), "extensionItems": None, "template": [],
+                   "hint": get_translation(hint), "position": int(position) - 1, "id": str(id), "parentId": parent_id
+                   }
+    for itm_key, itm_value in items_values.items():
+        extension_itm = {}
+        pi = []
+        if itm_key == "order":
+            extension_itm["order"] = itm_value
+        if itm_key == "id":
+            extension_itm["id"] = itm_value
+            pchklist_itm = frappe.db.get_list('ProMa Checklist Template Items',
+                                              fields=["item_type", "item_name",
+                                                      "hint", "proma_item_template_values", "idx"],
+                                              filters={"docstatus": 1, "parent": itm_value},
+                                              order_by="idx")
+            page_id = ""
+            grp_id = ""
+            for b in pchklist_itm:
+                pos = int(b.idx) + 1
+                if b.item_type == "Page":
+                    page_id = b.idx
+                    pi.append(get_item_values(json.loads(b.proma_item_template_values), b.idx,
+                                              pos, b.item_type, b.item_name, b.hint, ""))
+                if b.item_type == "Group":
+                    grp_id = b.idx
+                    pi.append(get_item_values(json.loads(b.proma_item_template_values),
+                                              b.idx, pos, b.item_type, b.item_name, b.hint, "", page_id))
+                if b.item_type == "Item":
+                    pi.append(get_item_values(json.loads(b.proma_item_template_values),
+                                              b.idx, pos, b.item_type, b.item_name, b.hint, "", grp_id))
+            extension_itm["items"] = pi
+            return_dict.update({"extensionItems": extension_itm})
+            return_dict.update({"template": pi})
 
     return return_dict
 
@@ -176,15 +217,18 @@ def proma_checklist(checklist):
         if b.item_type == "Page":
             page_id = b.idx
             proma_items.append(get_item_values(json.loads(b.proma_item_template_values), b.idx,
-                                               b.idx, b.item_type, b.item_name, b.hint, b.label))
+                                               b.idx, b.item_type, b.item_name, b.hint, b.values))
         if b.item_type == "Group":
             grp_id = b.idx
             proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
-                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, b.label, page_id))
+                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, b.values, page_id))
         if b.item_type == "Item":
             proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
-                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, b.label, grp_id))
-
+                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, b.values, grp_id))
+        if b.item_type == "Extension":
+            proma_items.append(get_extension_items(json.loads(b.proma_item_template_values),
+                                                   b.idx, b.idx, b.item_type, b.item_name, b.hint, b.values, grp_id))
+    
     data = {
         "referenceId": cl_item.referenceid,
         "createdAt": str(cl_item.creation),
@@ -243,6 +287,5 @@ def proma_checklist(checklist):
         "contributors": contributors_list,
         "items": proma_items
     }
-
     res = send_to_proma_api(data)
     return res

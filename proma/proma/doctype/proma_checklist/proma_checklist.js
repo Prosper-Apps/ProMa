@@ -25,7 +25,9 @@ function checklist_dialog(frm) {
 		date_field: "creation",
 		get_query() {
 			return {
-				filters: {  }
+				filters: {
+					"docstatus":1
+				}
 			};
 		},
 		action(selections) {
@@ -144,10 +146,28 @@ frappe.ui.form.on('ProMa Checklist', {
 		frm.set_query('proma_item_template', 'items', function() {
 			return {
 				filters: {
-					"type": ['in', ['Item', 'Group','Page']]
+					"type": ['in', ['Item', 'Group','Page','Extension']]
 				}
 			};
 		});
+
+		frm.set_query('template_id', function() {
+			return {
+				filters: {
+					"docstatus": 1
+				}
+			};
+		});
+	},
+
+	template_id: function(frm){
+		if(frm.doc.template_id){
+			frappe.db.get_doc("Proma Check List Template", frm.doc.template_id)
+            .then(doc => {
+                get_child_tables(frm,doc.proma_check_list_template,checklist_fields,"items");
+            });
+		}
+
 	}
 });
 
