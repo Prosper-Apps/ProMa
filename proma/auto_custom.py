@@ -56,6 +56,7 @@ def get_translation(source_text):
         }
 
 
+
 def get_item_values(items_values, id, position, item_type, item_name, hint, item_values=None, parent_id=None):
     return_dict = {}
     for itm_key, itm_value in items_values.items():
