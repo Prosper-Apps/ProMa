@@ -25,7 +25,9 @@
   "checklist_name_section",
   "template_section",
   "template_id",
+  "column_break_16",
   "approvedat",
+  "column_break_18",
   "template_names",
   "assignment_section_section",
   "assigneduserids",
@@ -114,13 +116,16 @@
   },
   {
    "fieldname": "template_id",
-   "fieldtype": "Int",
-   "label": "Template ID"
+   "fieldtype": "Link",
+   "label": "Template ID",
+   "options": "Proma Check List Template"
   },
   {
+   "fetch_from": "template_id.modified",
    "fieldname": "approvedat",
    "fieldtype": "Datetime",
-   "label": "Approved At"
+   "label": "Approved At",
+   "read_only": 1
   },
   {
    "default": "0",
@@ -276,6 +281,7 @@
   {
    "fieldname": "file_urls_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "File URLs"
   },
   {
@@ -390,9 +396,11 @@
    "translatable": 1
   },
   {
+   "fetch_from": "template_id.name",
    "fieldname": "template_names",
    "fieldtype": "Data",
    "label": "Template Name",
+   "read_only": 1,
    "translatable": 1
   },
   {
@@ -402,12 +410,20 @@
   {
    "fieldname": "column_break_9",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
   }
  ],
  "icon": "fa fa-file-alt",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-20 12:55:19.216147",
+ "modified": "2022-09-27 19:08:06.469837",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "ProMa Checklist",

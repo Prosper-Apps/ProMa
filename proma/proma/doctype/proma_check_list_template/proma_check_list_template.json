@@ -3,6 +3,7 @@
  "allow_guest_to_view": 1,
  "allow_import": 1,
  "allow_rename": 1,
+ "autoname": "field:title",
  "creation": "2022-06-25 14:33:51.615804",
  "description": "Page to show on the website\n",
  "doctype": "DocType",
@@ -11,8 +12,14 @@
  "field_order": [
   "section_title",
   "title",
+  "description",
+  "column_break_4",
+  "proma_clients",
+  "global",
+  "extension",
   "sb1",
-  "proma_check_list_template"
+  "proma_check_list_template",
+  "amended_from"
  ],
  "fields": [
   {
@@ -27,7 +34,8 @@
    "in_list_view": 1,
    "label": "Title",
    "no_copy": 1,
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "sb1",
@@ -38,12 +46,50 @@
    "fieldtype": "Table",
    "label": "Proma Check List Template",
    "options": "ProMa Checklist Template Items"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Proma Check List Template",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "translatable": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "proma_clients",
+   "fieldtype": "Table MultiSelect",
+   "label": "ProMa Clients",
+   "options": "ProMa Clients"
+  },
+  {
+   "default": "0",
+   "fieldname": "global",
+   "fieldtype": "Check",
+   "label": "Global"
+  },
+  {
+   "default": "0",
+   "fieldname": "extension",
+   "fieldtype": "Check",
+   "label": "Extension"
   }
  ],
  "icon": "fa fa-file-alt",
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2022-09-21 08:12:03.341216",
+ "modified": "2022-09-26 21:19:49.842400",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "Proma Check List Template",
@@ -65,5 +111,6 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "ASC",
+ "title_field": "title",
  "track_changes": 1
 }
