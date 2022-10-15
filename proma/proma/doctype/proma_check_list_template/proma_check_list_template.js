@@ -4,7 +4,8 @@ function open_template_values_editor(template, current_values = {}) {
 	return new Promise(resolve => {
 		frappe.model.with_doc("Proma Item Template", template).then((doc) => {
 			let d = new frappe.ui.Dialog({
-				title: __("Edit Values"),
+				size:"large",
+				title: __("Configure Values"),
 				fields: get_fields(doc),
 				primary_action(values) {
 					d.hide();

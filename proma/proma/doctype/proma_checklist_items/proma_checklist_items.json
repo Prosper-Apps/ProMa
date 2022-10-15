@@ -2,11 +2,11 @@
  "actions": [],
  "creation": "2022-07-08 11:20:43.025459",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "proma_item_template",
   "item_type",
-  "values",
   "edit_values",
   "column_break_4",
   "item_name",
@@ -23,6 +23,7 @@
    "options": "Proma Item Template"
   },
   {
+   "depends_on": "eval:(doc.item_type == \"Item\" || doc.item_type == \"Extension\")",
    "fieldname": "edit_values",
    "fieldtype": "Button",
    "in_list_view": 1,
@@ -63,17 +64,11 @@
   {
    "fieldname": "column_break_4",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "values",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Value"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2022-09-27 17:21:42.838038",
+ "modified": "2022-10-15 14:45:15.776073",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "ProMa Checklist Items",
