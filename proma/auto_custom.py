@@ -291,6 +291,5 @@ def proma_checklist(checklist):
         "contributors": contributors_list,
         "items": proma_items
     }
-    # frappe.throw("{}".format(proma_items))
     res = send_to_proma_api(data)
     return res
