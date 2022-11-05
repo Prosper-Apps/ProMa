@@ -59,13 +59,13 @@ def get_translation(source_text):
 def get_page_group_items(id, position, item_type, item_name, parent_id=None):
     return_dict = {"dataType": None, "values": None, "type": item_type.lower(),
                    "name": get_translation(item_name), "extensionItems": None, "template": None,
-                   "hint": None, "position": int(position) - 1, "id": str(id), "parentId": parent_id
+                   "props": None, "position": int(position) - 1, "id": str(id), "parentId": parent_id
                    }
 
     return return_dict
 
 
-def get_item_values(items_values, id, position, item_type, item_name, hint, parent_id=None):
+def get_item_values(items_values, id, position, item_type, item_name, parent_id=None):
     return_dict = {}
     for itm_key, itm_value in items_values.items():
         if itm_key == "options":
@@ -103,7 +103,6 @@ def get_item_values(items_values, id, position, item_type, item_name, hint, pare
             return_dict["dataType"] = itm_value
         else:
             props = {}
-            props.setdefault("hint", get_translation(hint))
             if isinstance(itm_value, int):
                 props.update({str(itm_key): bool(int(itm_value))})
             else:
@@ -127,10 +126,10 @@ def get_item_values(items_values, id, position, item_type, item_name, hint, pare
     return return_dict
 
 
-def get_extension_items(items_values, id, position, item_type, item_name, hint, parent_id=None):
+def get_extension_items(items_values, id, position, item_type, item_name, parent_id=None):
     return_dict = {"dataType": None, "values": None, "type": item_type.lower(),
                    "name": get_translation(item_name), "extensionItems": None, "template": [],
-                   "hint": get_translation(hint), "position": int(position) - 1, "id": str(id), "parentId": parent_id
+                   "position": int(position) - 1, "id": str(id), "parentId": parent_id
                    }
     for itm_key, itm_value in items_values.items():
         extension_itm = {}
@@ -141,7 +140,7 @@ def get_extension_items(items_values, id, position, item_type, item_name, hint, 
             extension_itm["id"] = itm_value
             pchklist_itm = frappe.db.get_list('ProMa Checklist Template Items',
                                               fields=["item_type", "item_name",
-                                                      "hint", "proma_item_template_values", "idx"],
+                                                      "proma_item_template_values", "idx"],
                                               filters={"docstatus": 1, "parent": itm_value},
                                               order_by="idx")
             page_id = ""
@@ -156,7 +155,7 @@ def get_extension_items(items_values, id, position, item_type, item_name, hint, 
                     pi.append(get_page_group_items(b.idx, pos, b.item_type, b.item_name, str(page_id)))
                 if b.item_type == "Item":
                     pi.append(get_item_values(json.loads(b.proma_item_template_values),
-                                              b.idx, pos, b.item_type, b.item_name, b.hint, str(grp_id)))
+                                              b.idx, pos, b.item_type, b.item_name, str(grp_id)))
             extension_itm["items"] = pi
             return_dict.update({"extensionItems": extension_itm})
             return_dict.update({"template": pi})
@@ -228,10 +227,10 @@ def proma_checklist(checklist):
             proma_items.append(get_page_group_items(b.idx, b.idx, b.item_type, b.item_name, str(page_id)))
         if b.item_type == "Item":
             proma_items.append(get_item_values(json.loads(b.proma_item_template_values),
-                                               b.idx, b.idx, b.item_type, b.item_name, b.hint, str(grp_id)))
+                                               b.idx, b.idx, b.item_type, b.item_name, str(grp_id)))
         if b.item_type == "Extension":
             proma_items.append(get_extension_items(json.loads(b.proma_item_template_values),
-                                                   b.idx, b.idx, b.item_type, b.item_name, b.hint, str(grp_id)))
+                                                   b.idx, b.idx, b.item_type, b.item_name, str(grp_id)))
 
     data = {
         "referenceId": cl_item.referenceid,
