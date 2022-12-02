@@ -9,6 +9,7 @@ import requests
 import datetime
 
 
+@frappe.whitelist()
 def get_protocols():
     url = "https://europe-west3-suncycle-proma-dev.cloudfunctions.net/api/protocols"
     headers = {
@@ -22,7 +23,6 @@ def get_protocols():
                 for (key, val) in x.items():
                     if key == "state" and val == 6:
                         protocols.append(x["id"])
-            # getprotocol(protocols)
             get_protocol(protocols)
         else:
             return "Error"
@@ -60,8 +60,6 @@ def get_protocol(protocols):
                     doc.client_id, doc.client_name = get_user_details(p_item["client"])
                     doc.customer_id, doc.customer_name = get_user_details(p_item["customer"])
                     doc.servicepartner, doc.service_partner_name = get_user_details(p_item["servicePartner"])
-                    doc.language, doc.requiredfieldsoptional, doc.allowparalleleditingcamera = get_settings(
-                        p_item["settings"])
                     doc.installation_id, doc.installation_name, doc.street, doc.city, doc.comment, doc.lat, doc.lng = get_installation_details(
                         p_item["installation"])
                     inst_contacts = get_installation_contacts(p_item["installation"])
@@ -77,14 +75,15 @@ def get_protocol(protocols):
                         doc.append("comments", cmm_n)
 
                     doc.append("camera", get_camera_settings(p_item["settings"]))
-
+                    doc.language, doc.requiredfieldsoptional, doc.allowparalleleditingcamera = get_settings(
+                        p_item["settings"])
                     itmms = get_items(p_item["items"])
                     for imt in itmms:
                         doc.append("items", imt)
 
-                    doc.insert()
+                    doc.insert(ignore_permissions=True, ignore_mandatory=True)
                 else:
-                    frappe.throw("An Error Occured in Protocol {}".format(response.raise_for_status()))
+                    frappe.throw("An Error occured in Protocol {}".format(response.raise_for_status()))
             except:
                 frappe.throw("An Error Occured in Protocol")
 
@@ -190,7 +189,7 @@ def get_items(data):
     items = []
     for itm in data:
         item1 = {
-            "idx": itm["id"],
+            "idx": int(itm["id"]),
             "item_type": itm["type"],
             "item_name": get_name(itm["name"]),
             "value": itm["values"]
