@@ -93,9 +93,26 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Protocol Return Data",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Proma Protocol Data",
+   "link_to": "Proma Protocol Data",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-09-20 13:03:14.434108",
+ "modified": "2022-12-02 07:13:49.900502",
  "modified_by": "Administrator",
  "module": "ProMa",
  "name": "Proma Testing",
@@ -119,6 +136,12 @@
    "doc_view": "List",
    "label": "ProMa Checklist",
    "link_to": "ProMa Checklist",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Proma Protocol Data",
+   "link_to": "Proma Protocol Data",
    "type": "DocType"
   }
  ]
