@@ -1,0 +1,444 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_import": 1,
+ "autoname": "format:Protocol-{id}",
+ "creation": "2022-11-28 14:02:30.080642",
+ "description": "Page to show on the website\n",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_title",
+  "chk_name",
+  "description",
+  "state",
+  "column_break_6",
+  "referenceid",
+  "id",
+  "created_at1",
+  "updated_at1",
+  "column_break_9",
+  "allowparallelediting",
+  "requireprecheck",
+  "requirepostcheck",
+  "checklist_name_section",
+  "template_section",
+  "template_id",
+  "column_break_16",
+  "approvedat",
+  "column_break_18",
+  "template_names",
+  "assignment_section_section",
+  "assigneduserids",
+  "column_break_21",
+  "assignedteams",
+  "client_section",
+  "client_id",
+  "column_break_19",
+  "client_name",
+  "customer_section_section",
+  "customer_id",
+  "column_break_23",
+  "customer_name",
+  "service_partner_section_section",
+  "servicepartner",
+  "column_break_32",
+  "service_partner_name",
+  "installation_section_section",
+  "installation_id",
+  "installation_name",
+  "street",
+  "city",
+  "column_break_38",
+  "comment",
+  "lat",
+  "lng",
+  "section_break_42",
+  "contacts",
+  "file_urls_section",
+  "file_url_id",
+  "on_demand",
+  "context",
+  "file_url",
+  "file_url_name",
+  "comment_section_section",
+  "comments",
+  "settings_section_section",
+  "language",
+  "requiredfieldsoptional",
+  "allowparalleleditingcamera",
+  "camera",
+  "contributors_section_section",
+  "proma_contributors",
+  "sb1",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_title",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "chk_name",
+   "fieldtype": "Small Text",
+   "label": "Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "referenceid",
+   "fieldtype": "Data",
+   "label": "Reference ID"
+  },
+  {
+   "description": "ID from Firebase",
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "label": "ID"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "allowparallelediting",
+   "fieldtype": "Check",
+   "label": "Allow Parallel Editing"
+  },
+  {
+   "default": "0",
+   "fieldname": "requireprecheck",
+   "fieldtype": "Check",
+   "label": "Require PreCheck"
+  },
+  {
+   "default": "0",
+   "fieldname": "requirepostcheck",
+   "fieldtype": "Check",
+   "label": "Require PostCheck"
+  },
+  {
+   "fieldname": "checklist_name_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "template_section",
+   "fieldtype": "Section Break",
+   "label": "Template "
+  },
+  {
+   "fieldname": "template_id",
+   "fieldtype": "Data",
+   "label": "Template ID"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "template_id.modified",
+   "fieldname": "approvedat",
+   "fieldtype": "Datetime",
+   "label": "Approved At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "template_id.name",
+   "fieldname": "template_names",
+   "fieldtype": "Small Text",
+   "label": "Template Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assignment_section_section",
+   "fieldtype": "Section Break",
+   "label": "Assignment Section "
+  },
+  {
+   "fieldname": "assigneduserids",
+   "fieldtype": "Small Text",
+   "label": "Assigned Users IDs",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assignedteams",
+   "fieldtype": "Small Text",
+   "label": "Assigned Team",
+   "read_only": 1
+  },
+  {
+   "fieldname": "client_section",
+   "fieldtype": "Section Break",
+   "label": "Client Section"
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client ID"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "client_id.client_name",
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "label": "Client Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_section_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Section"
+  },
+  {
+   "fieldname": "customer_id",
+   "fieldtype": "Data",
+   "label": "Customer ID"
+  },
+  {
+   "fieldname": "column_break_23",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "customer_id.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_partner_section_section",
+   "fieldtype": "Section Break",
+   "label": "Service Partner Section"
+  },
+  {
+   "fieldname": "servicepartner",
+   "fieldtype": "Data",
+   "label": "Service Partner ID"
+  },
+  {
+   "fieldname": "column_break_32",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "servicepartner.name1",
+   "fieldname": "service_partner_name",
+   "fieldtype": "Data",
+   "label": "Service Partner Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "installation_section_section",
+   "fieldtype": "Section Break",
+   "label": "Installation Section"
+  },
+  {
+   "fieldname": "installation_id",
+   "fieldtype": "Data",
+   "label": "ID"
+  },
+  {
+   "fieldname": "installation_name",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "street",
+   "fieldtype": "Data",
+   "label": "Street"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "column_break_38",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Data",
+   "label": "Comment"
+  },
+  {
+   "fieldname": "lat",
+   "fieldtype": "Data",
+   "label": "Latitude"
+  },
+  {
+   "fieldname": "lng",
+   "fieldtype": "Data",
+   "label": "Longitude"
+  },
+  {
+   "fieldname": "section_break_42",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 11,
+   "fieldname": "contacts",
+   "fieldtype": "Table",
+   "label": "Installation Contacts",
+   "options": "ProMa Installation Contacts",
+   "width": "100%"
+  },
+  {
+   "fieldname": "file_urls_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "File URLs"
+  },
+  {
+   "fieldname": "file_url_id",
+   "fieldtype": "Data",
+   "label": "ID"
+  },
+  {
+   "default": "0",
+   "fieldname": "on_demand",
+   "fieldtype": "Check",
+   "label": "On Demand"
+  },
+  {
+   "fieldname": "context",
+   "fieldtype": "Data",
+   "label": "Context"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Data",
+   "label": "URL",
+   "translatable": 1
+  },
+  {
+   "fieldname": "file_url_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "translatable": 1
+  },
+  {
+   "fieldname": "comment_section_section",
+   "fieldtype": "Section Break",
+   "label": "Comment Section"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Table",
+   "label": "Comments",
+   "options": "ProMa Comments"
+  },
+  {
+   "fieldname": "settings_section_section",
+   "fieldtype": "Section Break",
+   "label": "Settings Section"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Select",
+   "label": "Language",
+   "options": "\nde\nen\nes\nzh"
+  },
+  {
+   "default": "0",
+   "fieldname": "requiredfieldsoptional",
+   "fieldtype": "Check",
+   "label": "Required Fields Optional"
+  },
+  {
+   "default": "0",
+   "fieldname": "allowparalleleditingcamera",
+   "fieldtype": "Check",
+   "label": "Allow Parallel Editing"
+  },
+  {
+   "fieldname": "camera",
+   "fieldtype": "Table",
+   "label": "Camera",
+   "options": "ProMa Camera"
+  },
+  {
+   "fieldname": "contributors_section_section",
+   "fieldtype": "Section Break",
+   "label": "Contributors Section"
+  },
+  {
+   "fieldname": "proma_contributors",
+   "fieldtype": "Table",
+   "options": "ProMa Contributors"
+  },
+  {
+   "fieldname": "sb1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Proma CheckList Content",
+   "options": "ProMa Protocol Data Items"
+  },
+  {
+   "description": "The processing state of the protocol 1 = in preparation 2 = ready for execution 3 = in execution 4 = in review 5 = canceled 6 = finished",
+   "fieldname": "state",
+   "fieldtype": "Select",
+   "label": "Protocol State",
+   "options": "\n1\n2\n3\n4\n5\n6"
+  },
+  {
+   "fieldname": "created_at1",
+   "fieldtype": "Data",
+   "label": "Created At"
+  },
+  {
+   "fieldname": "updated_at1",
+   "fieldtype": "Data",
+   "label": "Updated At"
+  }
+ ],
+ "icon": "fa fa-file-alt",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-11-30 12:23:32.422700",
+ "modified_by": "Administrator",
+ "module": "ProMa",
+ "name": "Proma Protocol Data",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "track_changes": 1
+}
